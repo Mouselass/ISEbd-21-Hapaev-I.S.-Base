@@ -118,6 +118,14 @@ namespace Seaplane
             PointF[] planeP = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12 };
             g.FillPolygon(plane, planeP);
 
+            PointF w1 = new PointF(_startPosX + 35, _startPosY + 2);
+            PointF w2 = new PointF(_startPosX + 75, _startPosY + 22);
+            PointF w3 = new PointF(_startPosX + 82, _startPosY + 17);
+            PointF w4 = new PointF(_startPosX + 45, _startPosY);
+            PointF w5 = new PointF(_startPosX + 35, _startPosY + 2);
+            PointF[] wingP = { w1, w2, w3, w4, w5 };
+            g.FillPolygon(plane, wingP);
+
             if (Star)
             {
                 Brush star = new SolidBrush(DopColor);         
@@ -142,11 +150,7 @@ namespace Seaplane
             {
                 Brush wing = new SolidBrush(DopColor);
 
-                PointF w1 = new PointF(_startPosX + 35, _startPosY + 2);
-                PointF w2 = new PointF(_startPosX + 75, _startPosY + 22);
-                PointF w3 = new PointF(_startPosX + 82, _startPosY + 17);
-                PointF w4 = new PointF(_startPosX + 45, _startPosY);
-                PointF w5 = new PointF(_startPosX + 35, _startPosY + 2);
+                
                 PointF w6 = new PointF(_startPosX + 50, _startPosY + 13);
                 PointF w7 = new PointF(_startPosX + 80, _startPosY + 33);
                 PointF w8 = new PointF(_startPosX + 87, _startPosY + 28);
@@ -154,10 +158,9 @@ namespace Seaplane
                 PointF w10 = new PointF(_startPosX + 50, _startPosY + 13);
 
 
-                PointF[] wingP = { w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 };
-                g.FillPolygon(wing, wingP);
+                PointF[] dopWingP = { w6, w7, w8, w9, w10 };
+                g.FillPolygon(wing, dopWingP);
             }
-
             if (Floater)
             {
                 Brush floater = new SolidBrush(DopColor);

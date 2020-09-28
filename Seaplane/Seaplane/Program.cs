@@ -16,7 +16,7 @@ namespace Seaplane
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormSeaplane());
+            Application.Run(new FormPlane());
         }
     }
 }

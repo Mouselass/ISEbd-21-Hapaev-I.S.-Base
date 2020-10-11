@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCreatePlane = new System.Windows.Forms.Button();
-            this.buttonCreateWaterPlane = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
@@ -37,26 +35,6 @@
             this.pictureBoxPlane = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlane)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonCreatePlane
-            // 
-            this.buttonCreatePlane.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreatePlane.Name = "buttonCreatePlane";
-            this.buttonCreatePlane.Size = new System.Drawing.Size(120, 32);
-            this.buttonCreatePlane.TabIndex = 1;
-            this.buttonCreatePlane.Text = "Создать самолет";
-            this.buttonCreatePlane.UseVisualStyleBackColor = true;
-            this.buttonCreatePlane.Click += new System.EventHandler(this.ButtonCreatePlane_Click);
-            // 
-            // buttonCreateWaterPlane
-            // 
-            this.buttonCreateWaterPlane.Location = new System.Drawing.Point(138, 12);
-            this.buttonCreateWaterPlane.Name = "buttonCreateWaterPlane";
-            this.buttonCreateWaterPlane.Size = new System.Drawing.Size(135, 32);
-            this.buttonCreateWaterPlane.TabIndex = 2;
-            this.buttonCreateWaterPlane.Text = "Создать гидросамолет";
-            this.buttonCreateWaterPlane.UseVisualStyleBackColor = true;
-            this.buttonCreateWaterPlane.Click += new System.EventHandler(this.ButtonCreateWaterPlane_Click);
             // 
             // buttonRight
             // 
@@ -120,8 +98,6 @@
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonRight);
-            this.Controls.Add(this.buttonCreateWaterPlane);
-            this.Controls.Add(this.buttonCreatePlane);
             this.Controls.Add(this.pictureBoxPlane);
             this.Name = "FormPlane";
             this.Text = "FormPlane";
@@ -133,8 +109,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxPlane;
-        private System.Windows.Forms.Button buttonCreatePlane;
-        private System.Windows.Forms.Button buttonCreateWaterPlane;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonLeft;

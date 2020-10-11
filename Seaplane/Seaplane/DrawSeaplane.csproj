@@ -46,7 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aerodrome.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="FormAerodrome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAerodrome.Designer.cs">
+      <DependentUpon>FormAerodrome.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPlane.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +66,9 @@
     <Compile Include="Vehicle.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="WaterPlane.cs" />
+    <EmbeddedResource Include="FormAerodrome.resx">
+      <DependentUpon>FormAerodrome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPlane.resx">
       <DependentUpon>FormPlane.cs</DependentUpon>
     </EmbeddedResource>

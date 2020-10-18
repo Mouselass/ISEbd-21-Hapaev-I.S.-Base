@@ -46,7 +46,14 @@ namespace Seaplane
         {
             get
             {
-                return aerodromeStages[ind];
+                if (aerodromeStages.ContainsKey(ind))
+                {
+                    return aerodromeStages[ind];
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

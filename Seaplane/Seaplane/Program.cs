@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace Seaplane
 {
+
     static class Program
     {
         /// <summary>

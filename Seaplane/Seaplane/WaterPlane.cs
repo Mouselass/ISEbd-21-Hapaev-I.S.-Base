@@ -86,5 +86,10 @@ namespace Seaplane
                 g.FillPolygon(floater, floaterP);
             }
         }
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }

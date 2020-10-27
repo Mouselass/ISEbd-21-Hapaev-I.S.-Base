@@ -18,7 +18,6 @@ namespace Seaplane
         {
             InitializeComponent();
             aerodromeCollection = new AerodromeCollection(pictureBoxAerodrome.Width, pictureBoxAerodrome.Height);
-            Draw();
         }
 
         private void ReloadLevels()
@@ -78,51 +77,7 @@ namespace Seaplane
                 }
             }
         }
-
-        private void buttonLandPlane_Click(object sender, EventArgs e)
-        {           
-            if (listBoxAerodrome.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var plane = new Plane(100, 1000, dialog.Color);
-                    if (aerodromeCollection[listBoxAerodrome.SelectedItem.ToString()] + plane)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Недостаточно мест");
-                    }
-                }
-            }
-        }
-
-        private void buttonLandWaterplane_Click(object sender, EventArgs e)
-        {      
-            if (listBoxAerodrome.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var plane = new WaterPlane(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                        if (aerodromeCollection[listBoxAerodrome.SelectedItem.ToString()] + plane)
-                        {
-                            Draw();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Недостаточно мест");
-                        }
-                    }
-                }
-            }
-        }
-
+       
         private void buttonTakePlane_Click(object sender, EventArgs e)
         {
             if (listBoxAerodrome.SelectedIndex > -1 && maskedTextBox.Text != "")
@@ -143,6 +98,28 @@ namespace Seaplane
         private void listBoxAerodrome_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void buttonSetPlane_Click(object sender, EventArgs e)
+        {
+            var formPlaneConfig = new FormPlaneConfig();
+            formPlaneConfig.addPlane += AddPlane;
+            formPlaneConfig.Show();
+        }
+
+        private void AddPlane(Vehicle plane)
+        {
+            if (plane != null && listBoxAerodrome.SelectedIndex > -1)
+            {
+                if ((aerodromeCollection[listBoxAerodrome.SelectedItem.ToString()]) + plane)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Самолет не удалось поставить");
+                }
+            }
         }
     }
 }

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxAerodrome = new System.Windows.Forms.PictureBox();
-            this.buttonLandPlane = new System.Windows.Forms.Button();
-            this.buttonLandWaterplane = new System.Windows.Forms.Button();
             this.groupBoxTakePlane = new System.Windows.Forms.GroupBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.buttonTake = new System.Windows.Forms.Button();
@@ -40,6 +38,7 @@
             this.buttonAddAerodrome = new System.Windows.Forms.Button();
             this.listBoxAerodrome = new System.Windows.Forms.ListBox();
             this.buttonDeleteAerodrome = new System.Windows.Forms.Button();
+            this.buttonSetPlane = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAerodrome)).BeginInit();
             this.groupBoxTakePlane.SuspendLayout();
             this.SuspendLayout();
@@ -53,26 +52,6 @@
             this.pictureBoxAerodrome.Size = new System.Drawing.Size(757, 534);
             this.pictureBoxAerodrome.TabIndex = 0;
             this.pictureBoxAerodrome.TabStop = false;
-            // 
-            // buttonLandPlane
-            // 
-            this.buttonLandPlane.Location = new System.Drawing.Point(763, 246);
-            this.buttonLandPlane.Name = "buttonLandPlane";
-            this.buttonLandPlane.Size = new System.Drawing.Size(134, 35);
-            this.buttonLandPlane.TabIndex = 1;
-            this.buttonLandPlane.Text = "Посадить самолет";
-            this.buttonLandPlane.UseVisualStyleBackColor = true;
-            this.buttonLandPlane.Click += new System.EventHandler(this.buttonLandPlane_Click);
-            // 
-            // buttonLandWaterplane
-            // 
-            this.buttonLandWaterplane.Location = new System.Drawing.Point(764, 287);
-            this.buttonLandWaterplane.Name = "buttonLandWaterplane";
-            this.buttonLandWaterplane.Size = new System.Drawing.Size(134, 41);
-            this.buttonLandWaterplane.TabIndex = 2;
-            this.buttonLandWaterplane.Text = "Посадить гидросамолет";
-            this.buttonLandWaterplane.UseVisualStyleBackColor = true;
-            this.buttonLandWaterplane.Click += new System.EventHandler(this.buttonLandWaterplane_Click);
             // 
             // groupBoxTakePlane
             // 
@@ -90,7 +69,7 @@
             // 
             this.maskedTextBox.Location = new System.Drawing.Point(58, 51);
             this.maskedTextBox.Name = "maskedTextBox";
-            this.maskedTextBox.Size = new System.Drawing.Size(39, 20);
+            this.maskedTextBox.Size = new System.Drawing.Size(39, 22);
             this.maskedTextBox.TabIndex = 2;
             // 
             // buttonTake
@@ -108,7 +87,7 @@
             this.labelPlace.AutoSize = true;
             this.labelPlace.Location = new System.Drawing.Point(6, 54);
             this.labelPlace.Name = "labelPlace";
-            this.labelPlace.Size = new System.Drawing.Size(45, 13);
+            this.labelPlace.Size = new System.Drawing.Size(46, 13);
             this.labelPlace.TabIndex = 0;
             this.labelPlace.Text = "Место :";
             // 
@@ -116,7 +95,7 @@
             // 
             this.textBoxNewLevelName.Location = new System.Drawing.Point(764, 27);
             this.textBoxNewLevelName.Name = "textBoxNewLevelName";
-            this.textBoxNewLevelName.Size = new System.Drawing.Size(133, 20);
+            this.textBoxNewLevelName.Size = new System.Drawing.Size(133, 22);
             this.textBoxNewLevelName.TabIndex = 4;
             // 
             // labelAerodrome
@@ -124,7 +103,7 @@
             this.labelAerodrome.AutoSize = true;
             this.labelAerodrome.Location = new System.Drawing.Point(791, 9);
             this.labelAerodrome.Name = "labelAerodrome";
-            this.labelAerodrome.Size = new System.Drawing.Size(69, 13);
+            this.labelAerodrome.Size = new System.Drawing.Size(72, 13);
             this.labelAerodrome.TabIndex = 5;
             this.labelAerodrome.Text = "Аэродромы:";
             // 
@@ -157,19 +136,28 @@
             this.buttonDeleteAerodrome.UseVisualStyleBackColor = true;
             this.buttonDeleteAerodrome.Click += new System.EventHandler(this.buttonDeleteAerodrome_Click);
             // 
+            // buttonSetPlane
+            // 
+            this.buttonSetPlane.Location = new System.Drawing.Point(764, 292);
+            this.buttonSetPlane.Name = "buttonSetPlane";
+            this.buttonSetPlane.Size = new System.Drawing.Size(134, 46);
+            this.buttonSetPlane.TabIndex = 9;
+            this.buttonSetPlane.Text = "Добавить самолет";
+            this.buttonSetPlane.UseVisualStyleBackColor = true;
+            this.buttonSetPlane.Click += new System.EventHandler(this.buttonSetPlane_Click);
+            // 
             // FormAerodrome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 534);
+            this.Controls.Add(this.buttonSetPlane);
             this.Controls.Add(this.buttonDeleteAerodrome);
             this.Controls.Add(this.listBoxAerodrome);
             this.Controls.Add(this.buttonAddAerodrome);
             this.Controls.Add(this.labelAerodrome);
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.groupBoxTakePlane);
-            this.Controls.Add(this.buttonLandWaterplane);
-            this.Controls.Add(this.buttonLandPlane);
             this.Controls.Add(this.pictureBoxAerodrome);
             this.Name = "FormAerodrome";
             this.Text = "Аэродром";
@@ -184,8 +172,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxAerodrome;
-        private System.Windows.Forms.Button buttonLandPlane;
-        private System.Windows.Forms.Button buttonLandWaterplane;
         private System.Windows.Forms.GroupBox groupBoxTakePlane;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Button buttonTake;
@@ -195,5 +181,6 @@
         private System.Windows.Forms.Button buttonAddAerodrome;
         private System.Windows.Forms.Button buttonDeleteAerodrome;
         private System.Windows.Forms.ListBox listBoxAerodrome;
+        private System.Windows.Forms.Button buttonSetPlane;
     }
 }

@@ -14,12 +14,19 @@ namespace Seaplane
     {
         Vehicle plane = null;
 
-        public event Action<Vehicle> addPlane;
+        private event Action<Vehicle> addPlane;
 
         public FormPlaneConfig()
         {
             InitializeComponent();
-
+            panelRed.MouseDown += new MouseEventHandler(panelColor_MouseDown);
+            panelYellow.MouseDown += new MouseEventHandler(panelColor_MouseDown);
+            panelBlack.MouseDown += new MouseEventHandler(panelColor_MouseDown);
+            panelWhite.MouseDown += new MouseEventHandler(panelColor_MouseDown);
+            panelGray.MouseDown += new MouseEventHandler(panelColor_MouseDown);
+            panelOrange.MouseDown += new MouseEventHandler(panelColor_MouseDown);
+            panelGreen.MouseDown += new MouseEventHandler(panelColor_MouseDown);
+            panelBlue.MouseDown += new MouseEventHandler(panelColor_MouseDown);
             buttonCancel.Click += (object sender, EventArgs e) => { Close(); };
         }
 
@@ -35,18 +42,17 @@ namespace Seaplane
             }
         }
 
-        //Не используется
-        //public void AddEvent(Action<Vehicle> ev)
-        //{
-        //    if (addPlane == null)
-        //    {
-        //        addPlane = new Action<Vehicle>(ev);
-        //    }
-        //    else
-        //    {
-        //        addPlane += ev;
-        //    }
-        //}
+        public void AddEvent(Action<Vehicle> ev)
+        {
+            if (addPlane == null)
+            {
+                addPlane = new Action<Vehicle>(ev);
+            }
+            else
+            {
+                addPlane += ev;
+            }
+        }
 
         private void labelPlane_MouseDown(object sender, MouseEventArgs e)
         {
@@ -87,12 +93,12 @@ namespace Seaplane
 
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
         {
-            ((Panel)sender).DoDragDrop(((Panel)sender).BackColor.Name, DragDropEffects.Move | DragDropEffects.Copy);
+            (sender as Panel).DoDragDrop((sender as Panel).BackColor, DragDropEffects.Move | DragDropEffects.Copy);
         }
 
         private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.Text.ToString()))
+            if (e.Data.GetData(typeof(Color)) != null)
             {
                 e.Effect = DragDropEffects.Copy;
             }
@@ -107,7 +113,7 @@ namespace Seaplane
         {
             if (plane != null)
             {
-                plane.SetMainColor(Color.FromName(e.Data.GetData(DataFormats.Text).ToString()));
+                plane.SetMainColor((Color)e.Data.GetData(typeof(Color)));
                 DrawPlane();
             }
         }
@@ -116,7 +122,7 @@ namespace Seaplane
         {
             if (plane is WaterPlane && plane != null) 
             {
-                (plane as WaterPlane).SetDopColor(Color.FromName(e.Data.GetData(DataFormats.Text).ToString()));
+                (plane as WaterPlane).SetDopColor((Color)e.Data.GetData(typeof(Color)));
                 DrawPlane();
             }
         }

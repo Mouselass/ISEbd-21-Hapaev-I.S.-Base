@@ -103,7 +103,7 @@ namespace Seaplane
         private void buttonSetPlane_Click(object sender, EventArgs e)
         {
             var formPlaneConfig = new FormPlaneConfig();
-            formPlaneConfig.addPlane += AddPlane;
+            formPlaneConfig.AddEvent(AddPlane);
             formPlaneConfig.Show();
         }
 

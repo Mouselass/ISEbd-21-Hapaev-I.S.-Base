@@ -39,17 +39,24 @@
             this.listBoxAerodrome = new System.Windows.Forms.ListBox();
             this.buttonDeleteAerodrome = new System.Windows.Forms.Button();
             this.buttonSetPlane = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAerodrome)).BeginInit();
             this.groupBoxTakePlane.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxAerodrome
             // 
             this.pictureBoxAerodrome.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBoxAerodrome.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxAerodrome.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxAerodrome.Location = new System.Drawing.Point(0, 24);
             this.pictureBoxAerodrome.Name = "pictureBoxAerodrome";
-            this.pictureBoxAerodrome.Size = new System.Drawing.Size(757, 534);
+            this.pictureBoxAerodrome.Size = new System.Drawing.Size(757, 510);
             this.pictureBoxAerodrome.TabIndex = 0;
             this.pictureBoxAerodrome.TabStop = false;
             // 
@@ -146,6 +153,48 @@
             this.buttonSetPlane.UseVisualStyleBackColor = true;
             this.buttonSetPlane.Click += new System.EventHandler(this.buttonSetPlane_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(909, 24);
+            this.menuStrip.TabIndex = 10;
+            this.menuStrip.Text = "menuStrip";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file|*.txt";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "txt file|*.txt";
+            // 
             // FormAerodrome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,11 +208,15 @@
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.groupBoxTakePlane);
             this.Controls.Add(this.pictureBoxAerodrome);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormAerodrome";
             this.Text = "Аэродром";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAerodrome)).EndInit();
             this.groupBoxTakePlane.ResumeLayout(false);
             this.groupBoxTakePlane.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +235,11 @@
         private System.Windows.Forms.Button buttonDeleteAerodrome;
         private System.Windows.Forms.ListBox listBoxAerodrome;
         private System.Windows.Forms.Button buttonSetPlane;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

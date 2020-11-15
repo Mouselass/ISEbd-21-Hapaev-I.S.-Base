@@ -13,11 +13,24 @@ namespace Seaplane
 
         protected readonly int planeHeight = 60;
 
+        protected readonly char separator = ';';
+
         public Plane(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+        }
+
+        public Plane(string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
         }
 
         protected Plane(int maxSpeed, float weight, Color mainColor, int planeWidth, int planeHeight)
@@ -92,6 +105,11 @@ namespace Seaplane
             PointF w5 = new PointF(_startPosX + 35, _startPosY + 2);
             PointF[] wingP = { w1, w2, w3, w4, w5 };
             g.FillPolygon(plane, wingP);
+        }
+
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
         }
     }
 }

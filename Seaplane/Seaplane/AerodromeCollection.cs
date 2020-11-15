@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Seaplane
         private readonly int pictureWidth;
 
         private readonly int pictureHeight;
+
+        private readonly char separator = ':';
 
         public AerodromeCollection(int pictureWidth, int pictureHeight)
         {
@@ -55,8 +58,107 @@ namespace Seaplane
                     return null;
                 }
             }
+        }       
+
+        public bool SaveData(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine($"AerodromeCollection");
+
+                    foreach (var level in aerodromeStages)
+                    {
+                        sw.WriteLine($"Aerodrome{separator}{level.Key}");
+
+                        ITransport plane = null;
+
+                        for (int i = 0; (plane = level.Value.GetNext(i)) != null; i++)
+                        {
+                            if (plane != null)
+                            {
+                                if (plane.GetType().Name == "Plane")
+                                {
+                                    sw.Write($"Plane{separator}");
+                                }
+                                if (plane.GetType().Name == "WaterPlane")
+                                {
+                                    sw.Write($"WaterPlane{separator}");
+                                }
+
+                                sw.WriteLine(plane);
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool LoadData(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                return false;
+            }
+
+            string str = "";
+
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                str = sr.ReadLine();
+
+                if (str.Contains("AerodromeCollection"))
+                {
+                    aerodromeStages.Clear();
+                }
+                else
+                {
+                    return false;
+                }
+
+                str = sr.ReadLine();
+                Vehicle plane = null;
+                string key = string.Empty;
+
+                while (str != null && str.Contains("Aerodrome"))
+                {
+                    if (str.Contains("Aerodrome"))
+                    {
+                        key = str.Split(separator)[1];
+                        aerodromeStages.Add(key, new Aerodrome<Vehicle>(pictureWidth, pictureHeight));
+                    }
+
+                    str = sr.ReadLine();
+
+                    while (str != null && (str.Contains("Plane") || str.Contains("WaterPlane")))
+                    {
+                        if (str.Split(separator)[0] == "Plane")
+                        {
+                            plane = new Plane(str.Split(separator)[1]);
+                        }
+                        else if (str.Split(separator)[0] == "WaterPlane")
+                        {
+                            plane = new WaterPlane(str.Split(separator)[1]);
+                        }
+
+                        var result = aerodromeStages[key] + plane;
+
+                        if (!result)
+                        {
+                            return false;
+                        }
+
+                        str = sr.ReadLine();
+                    }
+                }
+                return true;
+            } 
         }
     }
-
 }
-

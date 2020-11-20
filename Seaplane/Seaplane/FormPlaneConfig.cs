@@ -19,14 +19,14 @@ namespace Seaplane
         public FormPlaneConfig()
         {
             InitializeComponent();
-            panelRed.MouseDown += new MouseEventHandler(panelColor_MouseDown);
-            panelYellow.MouseDown += new MouseEventHandler(panelColor_MouseDown);
-            panelBlack.MouseDown += new MouseEventHandler(panelColor_MouseDown);
-            panelWhite.MouseDown += new MouseEventHandler(panelColor_MouseDown);
-            panelGray.MouseDown += new MouseEventHandler(panelColor_MouseDown);
-            panelOrange.MouseDown += new MouseEventHandler(panelColor_MouseDown);
-            panelGreen.MouseDown += new MouseEventHandler(panelColor_MouseDown);
-            panelBlue.MouseDown += new MouseEventHandler(panelColor_MouseDown);
+            panelRed.MouseDown += panelColor_MouseDown;
+            panelYellow.MouseDown += panelColor_MouseDown;
+            panelBlack.MouseDown += panelColor_MouseDown;
+            panelWhite.MouseDown += panelColor_MouseDown;
+            panelGray.MouseDown += panelColor_MouseDown;
+            panelOrange.MouseDown += panelColor_MouseDown;
+            panelGreen.MouseDown += panelColor_MouseDown;
+            panelBlue.MouseDown += panelColor_MouseDown;
             buttonCancel.Click += (object sender, EventArgs e) => { Close(); };
         }
 

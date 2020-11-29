@@ -60,7 +60,7 @@ namespace Seaplane
             }
         }       
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -96,15 +96,14 @@ namespace Seaplane
                         }
                     }
                 }
-            }
-            return true;
+            }           
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             string str = "";
@@ -119,7 +118,7 @@ namespace Seaplane
                 }
                 else
                 {
-                    return false;
+                    throw new FormatException();
                 }
 
                 str = sr.ReadLine();
@@ -151,13 +150,12 @@ namespace Seaplane
 
                         if (!result)
                         {
-                            return false;
+                            throw new NullReferenceException();
                         }
 
                         str = sr.ReadLine();
                     }
                 }
-                return true;
             } 
         }
     }

@@ -35,7 +35,7 @@ namespace Seaplane
         {
             if (a._places.Count >= a._maxCount)
             {
-                return false;
+                throw new AerodromeOverflowException();
             }
 
             a._places.Add(plane);
@@ -47,7 +47,7 @@ namespace Seaplane
         {
             if (index < -1 || index > a._places.Count)
             {
-                return null;
+                throw new PlaneNotFoundException(index);
             }
 
             T plane = a._places[index];

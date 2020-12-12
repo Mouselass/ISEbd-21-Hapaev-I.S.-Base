@@ -54,8 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AerodromeAlreadyHaveException.cs" />
     <Compile Include="AerodromeCollection.cs" />
     <Compile Include="Aerodrome.cs" />
+    <Compile Include="PlaneComparer.cs" />
     <Compile Include="PlaneNotFoundException.cs" />
     <Compile Include="AerodromeOverflowException.cs" />
     <Compile Include="Direction.cs" />

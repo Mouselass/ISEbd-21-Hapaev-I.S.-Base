@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Collections;
 
 namespace Seaplane
 {
-    public class Aerodrome<T> where T : class, ITransport
+    public class Aerodrome<T> : IEnumerator<T>, IEnumerable<T> 
+        where T : class, ITransport
     {
         private readonly List<T> _places;
 
@@ -21,6 +23,12 @@ namespace Seaplane
 
         private readonly int _placeSizeHeight = 80;
 
+        private int _currentIndex;
+
+        public T Current => _places[_currentIndex];
+
+        object IEnumerator.Current => _places[_currentIndex];
+
         public Aerodrome(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
@@ -29,6 +37,7 @@ namespace Seaplane
             pictureWidth = picWidth;
             pictureHeight = picHeight;
             _places = new List<T>();
+            _currentIndex = -1;
         }
 
         public static bool operator +(Aerodrome<T> a, T plane)
@@ -36,6 +45,10 @@ namespace Seaplane
             if (a._places.Count >= a._maxCount)
             {
                 throw new AerodromeOverflowException();
+            }
+            if (a._places.Contains(plane))
+            {
+                throw new AerodromeAlreadyHaveException();
             }
 
             a._places.Add(plane);
@@ -90,6 +103,32 @@ namespace Seaplane
             }
             return _places[index];
         }
-    }
 
+        public void Sort() => _places.Sort((IComparer<T>)new PlaneComparer());
+
+        public void Dispose()
+        {
+        }
+
+        public bool MoveNext()
+        {
+            _currentIndex++;
+            return (_currentIndex < _places.Count);
+        }
+
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
+        }
+    }
 }

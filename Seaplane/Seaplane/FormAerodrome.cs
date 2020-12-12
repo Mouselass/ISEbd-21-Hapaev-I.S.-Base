@@ -157,6 +157,12 @@ namespace Seaplane
                     logger.Warn("Переполнение");
                 }
 
+                catch (AerodromeAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn("Дублирование");
+                }
+
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -203,6 +209,16 @@ namespace Seaplane
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Warn("Неизвестная ошибка при загрузке");
                 }
+            }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            if (listBoxAerodrome.SelectedIndex > -1)
+            {
+                aerodromeCollection[listBoxAerodrome.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
             }
         }
     }

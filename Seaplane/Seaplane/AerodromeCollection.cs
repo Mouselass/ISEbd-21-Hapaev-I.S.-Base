@@ -76,23 +76,18 @@ namespace Seaplane
                     {
                         sw.WriteLine($"Aerodrome{separator}{level.Key}");
 
-                        ITransport plane = null;
-
-                        for (int i = 0; (plane = level.Value.GetNext(i)) != null; i++)
+                        foreach (ITransport plane in level.Value)
                         {
-                            if (plane != null)
+                            if (plane.GetType().Name == "Plane")
                             {
-                                if (plane.GetType().Name == "Plane")
-                                {
-                                    sw.Write($"Plane{separator}");
-                                }
-                                if (plane.GetType().Name == "WaterPlane")
-                                {
-                                    sw.Write($"WaterPlane{separator}");
-                                }
-
-                                sw.WriteLine(plane);
+                                sw.Write($"Plane{separator}");
                             }
+                            if (plane.GetType().Name == "WaterPlane")
+                            {
+                                sw.Write($"WaterPlane{separator}");
+                            }
+
+                            sw.WriteLine(plane);
                         }
                     }
                 }

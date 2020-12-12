@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Seaplane
 {
-    public class WaterPlane : Plane
+    public class WaterPlane : Plane, IEquatable<WaterPlane>
     {
         public Color DopColor { private set; get; }
 
@@ -110,6 +110,63 @@ namespace Seaplane
         public override string ToString()
         {
             return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Star}{separator}{Wing}{separator}{Floater}";
+        }
+
+        public bool Equals(WaterPlane other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Star != other.Star)
+            {
+                return false;
+            }
+            if (Wing != other.Wing)
+            {
+                return false;
+            }
+            if (Floater != other.Floater)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is WaterPlane planeObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(planeObj);
+            }
         }
     }
 }
